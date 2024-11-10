@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">hello toast</string>
+    <string name="button_label_count">COUNT</string>
+    <string name="button_label_toast">TOAST</string>
+    <string name="count_initial_value">0</string>
+    <dimen name="activity_horizontal_margin">160dp</dimen>
+    <dimen name="activity_vertical_margin">100dp</dimen>
+    <dimen name="my_view_width">410dp</dimen>
+    <dimen name="count_text_size">250sp</dimen>
+    <dimen name="counter_height">300dp</dimen>
+</resources>
