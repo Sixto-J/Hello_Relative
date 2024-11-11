@@ -1,17 +1,16 @@
 package com.example.hello_relative;
 
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 
 
 public class MainActivity extends AppCompatActivity {
 
+    int numerodecontador = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,7 +19,6 @@ public class MainActivity extends AppCompatActivity {
 
 
         Button btnEnviar1 = findViewById(R.id.button);
-
         btnEnviar1.setOnClickListener(v -> {
             // código a ejecutar cuando sea pulsado
             TextView tv1 = findViewById(R.id.textView);
@@ -33,14 +31,27 @@ public class MainActivity extends AppCompatActivity {
             // código a ejecutar cuando sea pulsado
             TextView tv1 = findViewById(R.id.textView);
             String aux_string = tv1.getText().toString();
-            int numerodecontador = Integer.parseInt(aux_string);
+            numerodecontador = Integer.parseInt(aux_string);
             //.replaceAll("[\\D]", ""));
             numerodecontador++;
             tv1.setText(String.valueOf(numerodecontador));
         });
-
-
     }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        TextView tv1 = findViewById(R.id.textView);
+        outState.putString("YourTextViewTextIdentifier", tv1.getText().toString());
+        super.onSaveInstanceState(outState);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        TextView tv1 = findViewById(R.id.textView);
+        tv1.setText(savedInstanceState.getString("YourTextViewTextIdentifier"));
+    }
+
 
 }
 
